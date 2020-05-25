@@ -20,8 +20,8 @@ defmodule Animedl.Fetch do
         animes
         |> Animedl.Parallel.run(@num_workers, fn a ->
           IO.puts("Downloading #{a.title}")
-          download_torrent_file(a)
-          IO.puts("Saved to #{a.title}")
+          writepath = download_torrent_file(a)
+          IO.puts("Saved to #{writepath}")
         end)
 
         :ok
