@@ -60,7 +60,7 @@ defmodule Animedl.Backends.Nyaa do
   end
 
   @spec parse_int(String.t()) :: integer()
-  defp parse_int(""), do: 0
+  defp parse_int("?"), do: 0
 
   defp parse_int(intstr) do
     {i, _} = Integer.parse(intstr)
@@ -70,6 +70,6 @@ defmodule Animedl.Backends.Nyaa do
   @spec parse_datetime(String.t()) :: DateTime.t()
   defp parse_datetime(dtstr) do
     # 2019-04-21 14:49
-    Timex.parse!(dtstr <> " PST", "%F %R %Z", :strftime)
+    Timex.parse!(dtstr <> "", "%F %R", :strftime)
   end
 end
